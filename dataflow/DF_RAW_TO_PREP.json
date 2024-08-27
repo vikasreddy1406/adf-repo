@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "DF_RAW_TO_PREP",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -9,16 +9,49 @@
 						"referenceName": "DS_orders_sql",
 						"type": "DatasetReference"
 					},
-					"name": "orders"
+					"name": "orders0raw"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DS_orders_cleaned",
+						"type": "DatasetReference"
+					},
+					"name": "orders0prep"
+				}
+			],
+			"transformations": [
+				{
+					"name": "orders0filtered"
+				}
+			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          OrderID as string,",
+				"          ProductID as string,",
+				"          ProductName as string,",
+				"          Quantity as string,",
+				"          OrderTimestamp as string,",
+				"          Price as string,",
+				"          CustomerID as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> orders"
+				"     format: 'table') ~> orders0raw",
+				"orders0raw filter(OrderTimestamp!=\"\") ~> orders0filtered",
+				"orders0filtered sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> orders0prep"
 			]
 		}
 	}
