@@ -19,7 +19,11 @@
 					"name": "customerscleaned"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "flattable"
+				}
+			],
 			"transformations": [
 				{
 					"name": "combinedtable"
@@ -59,7 +63,11 @@
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
-				"     broadcast: 'auto')~> combinedtable"
+				"     broadcast: 'auto')~> combinedtable",
+				"combinedtable sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> flattable"
 			]
 		}
 	}
