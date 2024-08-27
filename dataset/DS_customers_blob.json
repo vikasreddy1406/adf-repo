@@ -1,0 +1,24 @@
+{
+	"name": "DS_customers_blob",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADF_TO_BLOB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "consolidated_customer.csv",
+				"folderPath": "customer",
+				"container": "output-assessment"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
