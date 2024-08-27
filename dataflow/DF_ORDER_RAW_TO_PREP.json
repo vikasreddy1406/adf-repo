@@ -21,7 +21,11 @@
 					"name": "orders0prep"
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "aggregate1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          OrderID as string,",
@@ -36,7 +40,8 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> orders0raw",
-				"orders0raw sink(allowSchemaDrift: true,",
+				"orders0raw aggregate(groupBy(OrderID)) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
