@@ -49,6 +49,43 @@
 					},
 					"traceLevel": "Fine"
 				}
+			},
+			{
+				"name": "prep to report",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "orders raw to prep",
+						"dependencyConditions": [
+							"Completed"
+						]
+					},
+					{
+						"activity": "customers raw to prep",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DF_PREP_TO_REPORT",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
 			}
 		],
 		"annotations": []
