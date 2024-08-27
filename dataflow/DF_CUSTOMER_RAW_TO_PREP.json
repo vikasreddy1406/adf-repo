@@ -23,7 +23,7 @@
 			],
 			"transformations": [
 				{
-					"name": "derivedColumn1"
+					"name": "customers0null"
 				}
 			],
 			"scriptLines": [
@@ -43,8 +43,8 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> customers0raw",
-				"customers0raw derive(each(match(1==1), $$ = iifNull($$,toString(\"NULL\")))) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"customers0raw derive(each(match(1==1), $$ = iifNull($$,toString(\"NULL\")))) ~> customers0null",
+				"customers0null sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",

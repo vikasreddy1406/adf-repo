@@ -21,7 +21,11 @@
 					"name": "orders0prep"
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          OrderID as string,",
@@ -36,7 +40,8 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> orders0raw",
-				"orders0raw sink(allowSchemaDrift: true,",
+				"orders0raw derive(each(match(1==1), $$ = iifNull($$,toString(\"NULL\")))) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
