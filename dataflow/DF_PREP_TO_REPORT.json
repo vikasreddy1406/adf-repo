@@ -31,6 +31,9 @@
 			"transformations": [
 				{
 					"name": "combinedtable"
+				},
+				{
+					"name": "sort1"
 				}
 			],
 			"scriptLines": [
@@ -68,7 +71,8 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> combinedtable",
-				"combinedtable sink(allowSchemaDrift: true,",
+				"combinedtable sort(asc(ERROR_FUNCTION(''), true)) ~> sort1",
+				"sort1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
