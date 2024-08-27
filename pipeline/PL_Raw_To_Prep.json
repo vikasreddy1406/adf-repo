@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "raw to prep",
+				"name": "orders raw to prep",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -27,7 +27,7 @@
 				}
 			},
 			{
-				"name": "Data flow1",
+				"name": "customers raw to prep",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
