@@ -1,0 +1,24 @@
+{
+	"name": "DS_orders_blob",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADF_TO_BLOB",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "consolidate_orders.csv",
+				"folderPath": "orders",
+				"container": "output-assessment"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
