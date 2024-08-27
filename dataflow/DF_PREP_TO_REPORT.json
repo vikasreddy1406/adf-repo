@@ -20,7 +20,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "combinedtable"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          OrderID as string,",
@@ -50,7 +54,12 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> customerscleaned"
+				"     format: 'table') ~> customerscleaned",
+				"orderscleaned, customerscleaned join(orderscleaned@CustomerID == customerscleaned@CustomerID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> combinedtable"
 			]
 		}
 	}
