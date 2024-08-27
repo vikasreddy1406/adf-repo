@@ -1,5 +1,5 @@
 {
-	"name": "DS_input_data",
+	"name": "DS_input_csv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LS_ADF_TO_BLOB",
