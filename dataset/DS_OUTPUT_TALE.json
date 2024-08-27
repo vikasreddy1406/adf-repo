@@ -1,0 +1,16 @@
+{
+	"name": "DS_OUTPUT_TALE",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "report",
+			"table": "flat"
+		}
+	}
+}

@@ -21,6 +21,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "DS_OUTPUT_TALE",
+						"type": "DatasetReference"
+					},
 					"name": "flattable"
 				}
 			],
@@ -66,8 +70,14 @@
 				"     broadcast: 'auto')~> combinedtable",
 				"combinedtable sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> flattable"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> flattable"
 			]
 		}
 	}
