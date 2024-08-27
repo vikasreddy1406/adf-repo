@@ -46,7 +46,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> source1",
-				"source1 derive() ~> derivedColumn1"
+				"source1 derive(daysToShip = ERROR_FUNCTION('')) ~> derivedColumn1"
 			]
 		}
 	}
