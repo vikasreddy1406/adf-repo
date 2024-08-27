@@ -1,5 +1,5 @@
 {
-	"name": "DF_RAW_TO_PREP",
+	"name": "DF_ORDERS_RAW_TO_PREP",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
