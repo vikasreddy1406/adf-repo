@@ -9,7 +9,14 @@
 						"referenceName": "DS_orders_cleaned",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "orderscleaned"
+				},
+				{
+					"dataset": {
+						"referenceName": "DS_customers_cleaned",
+						"type": "DatasetReference"
+					},
+					"name": "customerscleaned"
 				}
 			],
 			"sinks": [],
@@ -27,7 +34,23 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> source1"
+				"     format: 'table') ~> orderscleaned",
+				"source(output(",
+				"          CustomerID as string,",
+				"          FirstName as string,",
+				"          LastName as string,",
+				"          Email as string,",
+				"          PhoneNumber as string,",
+				"          Address as string,",
+				"          City as string,",
+				"          State as string,",
+				"          ZipCode as string,",
+				"          Country as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> customerscleaned"
 			]
 		}
 	}
