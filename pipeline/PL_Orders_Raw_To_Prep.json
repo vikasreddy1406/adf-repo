@@ -1,9 +1,9 @@
 {
-	"name": "pipeline1",
+	"name": "PL_Orders_Raw_To_Prep",
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "Orders raw to prep",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
