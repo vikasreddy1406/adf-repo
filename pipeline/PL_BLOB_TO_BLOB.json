@@ -76,15 +76,12 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
+						"type": "ExcelSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
 							"wildcardFileName": "*.xlsx",
 							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
 						}
 					},
 					"sink": {
@@ -111,7 +108,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_input_data",
+						"referenceName": "DS_input_excel",
 						"type": "DatasetReference"
 					}
 				],
