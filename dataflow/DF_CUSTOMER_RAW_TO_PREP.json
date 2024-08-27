@@ -1,42 +1,45 @@
 {
-	"name": "DF_ORDER_RAW_TO_PREP",
+	"name": "DF_CUSTOMER_RAW_TO_PREP",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "DS_orders_sql",
+						"referenceName": "DS_customers_sql",
 						"type": "DatasetReference"
 					},
-					"name": "orders0raw"
+					"name": "customers0raw"
 				}
 			],
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "DS_orders_cleaned",
+						"referenceName": "DS_customers_cleaned",
 						"type": "DatasetReference"
 					},
-					"name": "orders0prep"
+					"name": "customers0cleaned"
 				}
 			],
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          OrderID as string,",
-				"          ProductID as string,",
-				"          ProductName as string,",
-				"          Quantity as string,",
-				"          OrderTimestamp as string,",
-				"          Price as string,",
-				"          CustomerID as string",
+				"          CustomerID as string,",
+				"          FirstName as string,",
+				"          LastName as string,",
+				"          Email as string,",
+				"          PhoneNumber as string,",
+				"          Address as string,",
+				"          City as string,",
+				"          State as string,",
+				"          ZipCode as string,",
+				"          Country as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
-				"     format: 'table') ~> orders0raw",
-				"orders0raw sink(allowSchemaDrift: true,",
+				"     format: 'table') ~> customers0raw",
+				"customers0raw sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -45,8 +48,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     saveOrder: 0,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> orders0prep"
+				"     errorHandlingOption: 'stopOnFirstError') ~> customers0cleaned"
 			]
 		}
 	}
