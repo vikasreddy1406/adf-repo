@@ -43,7 +43,7 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> customers0raw",
-				"customers0raw derive({$$} = iifNull($$,toString(\"NULL\"))) ~> derivedColumn1",
+				"customers0raw derive(each(match(1==1), $$ = ERROR_FUNCTION(''))) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
