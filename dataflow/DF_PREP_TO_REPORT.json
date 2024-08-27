@@ -71,7 +71,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> combinedtable",
-				"combinedtable sort(asc(ERROR_FUNCTION(''), true)) ~> sort1",
+				"combinedtable sort(asc(OrderID, true)) ~> sort1",
 				"sort1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
